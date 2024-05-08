@@ -1,0 +1,16 @@
+<div class="mb-5 vw-100 bg-dark d-flex align-items-center justify-content-center" style="height: 80px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-10">
+        <h2 class="text-white">Stock<span>Pro</span></h2>
+      </div>
+      <div class="col-2">
+        <% if user_signed_in? %>
+          <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-outline-danger float-end" do %>
+            <i class="bi bi-box-arrow-left"></i> SAIR
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
