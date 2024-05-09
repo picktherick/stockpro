@@ -1,37 +1,37 @@
 <h2>Olá!</h2>
-<p>Bem-vindo à nossa página novamente <b><%= current_user.email %></b></p>
+<p>Bem-vindo a nossa página novamente <b><%= current_user.email %></b></p>
 <hr>
 <h3 class="text-center mb-4">Dashboard</h3>
 <div class="d-flex justify-content-around flex-wrap">
-  <div class="card text-bg-light mb-3 text-center min-width-200px" style="max-width: 18rem;">
+  <div class="card text-bg-light mb-3 text-center min-width-200px shadow shadow-md" style="max-width: 18rem;">
     <div class="card-header">Produtos no Estoque</div>
     <div class="card-body">
       <h5 class="card-title">Quantidade Total</h5>
       <p class="card-text fs-4"><%= @total_of_products %></p>
     </div>
   </div>
-  <div class="card text-bg-light mb-3 text-center min-width-200px" style="max-width: 18rem;">
+  <div class="card text-bg-light mb-3 text-center min-width-200px shadow shadow-md" style="max-width: 18rem;">
     <div class="card-header">Produtos no Estoque</div>
     <div class="card-body">
       <h5 class="card-title">Valor Total</h5>
       <p class="card-text fs-4"><%= number_to_currency(@products_total_amount / 100) %></p>
     </div>
   </div>
-  <div class="card text-bg-light mb-3 text-center min-width-200px" style="max-width: 18rem;">
+  <div class="card text-bg-light mb-3 text-center min-width-200px shadow shadow-md" style="max-width: 18rem;">
     <div class="card-header">Produtos Encomendados</div>
     <div class="card-body">
       <h5 class="card-title">Quantidade Total</h5>
       <p class="card-text fs-4"><%= @total_of_orders %></p>
     </div>
   </div>
-  <div class="card text-bg-light mb-3 text-center min-width-200px" style="max-width: 18rem;">
+  <div class="card text-bg-light mb-3 text-center min-width-200px shadow shadow-md" style="max-width: 18rem;">
     <div class="card-header">Produtos Encomendados</div>
     <div class="card-body">
       <h5 class="card-title">Valor Total</h5>
       <p class="card-text fs-4"><%= number_to_currency(@orders_total_amount / 100) %></p>
     </div>
   </div>
-  <div class="card text-bg-light mb-3 text-center min-width-200px" style="max-width: 18rem;">
+  <div class="card text-bg-light mb-3 text-center min-width-200px shadow shadow-md" style="max-width: 18rem;">
     <div class="card-header">Clientes</div>
     <div class="card-body">
       <h5 class="card-title">Total</h5>
