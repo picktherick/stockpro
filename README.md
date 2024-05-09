@@ -1,3 +1,5 @@
+## Made by @rickkque
+
 # Installarion
 
 * Ruby version.................v3.2
