@@ -14,7 +14,7 @@
 
   <body class="bg-dark-subtle">
     <%= render 'shared/navbar' %>
-    <div class="container">
+    <div class="container main-container">
       <% flash.each do |key, value| %>
         <div class="<%= flash_class(key) %>">
           <%= value %>

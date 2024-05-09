@@ -1,19 +1,21 @@
 <div class="mb-5 vw-100 bg-dark d-flex align-items-center justify-content-center" style="height: 80px;">
   <div class="container">
-    <div class="row">
-      <div class="col-3">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
         <%= link_to root_path, class:"decoration-none" do %>
           <h2 class="text-white">Stock<span>Pro</span></h2>
         <% end %>
+
+        <ul class="d-flex justify-content-evenly mt-2" style="list-style: none;">
+          <li><%= link_to "Produtos", products_path, class: "nav-link" %></li>
+          <li><%= link_to "Categorias", "#", class: "nav-link mx-4" %></li>
+          <li><%= link_to "Códigos", barcodes_path, class: "nav-link" %></li>
+          <li><%= link_to "Clientes", "#", class: "nav-link mx-4" %></li>
+          <li><%= link_to "Encomendas", orders_path, class: "nav-link" %></li>
+        </ul>
       </div>
-      <div class="col-1 mt-2">
-        <%= link_to "Produtos", products_path, class: "nav-link" %>
-      </div>
-      <div class="col-2 mt-2">
-        <%= link_to "Codigo de Barras", barcodes_path, class: "nav-link" %>
-      </div>
-      <div class="col-4"></div>
-      <div class="col-2">
+
+      <div class="">
         <% if user_signed_in? %>
           <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-outline-danger float-end" do %>
             <i class="bi bi-box-arrow-left"></i> SAIR

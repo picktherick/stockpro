@@ -1,0 +1,68 @@
+<%= form_with(model: order) do |form| %>
+  <div class="row">
+    <div class="col-6">
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Produto</span>
+        <%= form.select(
+          :product_id, 
+          options_for_select(
+            Product.available_products.with_barcode.map { |k| ["#{k.name} | #{k.quantity} unidade(s) disponível(is)", k.id] }, 
+            @order.product_id
+          ), 
+          { include_blank: 'Selecione o Produto' }, 
+          class: "form-select", required: true ) 
+        %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Quantidade</span>
+        <%= form.number_field :quantity, class: "form-control shadow shadow-sm", min: 1, required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Status</span>
+        <%= form.select(
+          :status, 
+          options_for_select(
+            @order.persisted? ? (Order.statuses.select { |status| status != "pending" }.map { |k| [t(k[0]), k[1]] }) : (Order.statuses.map { |k| [t(k[0]), k[1]] }), 
+            @order.status
+          ), 
+          { include_blank: 'Selecione o status' }, 
+          class: "form-select", required: true ) 
+        %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= link_to "Voltar", orders_path, class:"btn btn-outline-secondary" %>
+    <%= form.submit "#{@order.persisted? ? "Atualizar" : "Cadastrar"}", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script>
+  `<% if @order.persisted? %>`
+    $("#order_product_id").attr("disabled", true);
+    $("#order_quantity").attr("disabled", true);
+  `<% end %>`
+
+  $("#order_product_id").focusout(function() {
+    $.ajax({
+      type: "GET",
+      url: "<%= find_product_path %>",
+      data: {
+        product_id: $("#order_product_id").val()
+      },
+      success: function(response) {
+        var quantity = parseInt(response)
+        $("#order_quantity").attr("max", quantity);
+
+        var mask_numbers = ""
+        for (let i = 0; i < response.toString().split('').map(Number).length; i++) {
+          mask_numbers = mask_numbers + "0"
+        }
+        $('#order_quantity').mask(mask_numbers);
+      }
+    });
+  });
+</script>

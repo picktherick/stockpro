@@ -30,7 +30,7 @@
         <td>
           <% if barcode.status %>
             <%= button_to barcode_path(barcode), method: :delete, class: "btn btn-outline-danger" do %>
-              <i class="bi bi-power"></i>
+              <i class="bi bi-trash"></i>
             <% end %>
           <% else %>
             Indisponível

@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-10">
+    <h1>Encomendas</h1>
+  </div>
+  <div class="col-2">
+    <%= link_to "Novo", new_order_path, class: "btn btn-primary float-end" %>
+  </div>
+</div>
+<hr>
+<table class="table table-striped shadow">
+  <thead>
+    <tr>
+      <th>Criado em</th>
+      <th>Produto</th>
+      <th>Código de Barras</th>
+      <th>Quantidade</th>
+      <th>Valor total</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.created_at.strftime("%d/%m/%Y %H:%M"), edit_order_path(order) %></td>
+        <td><%= order.product.name %></td>
+        <td><%= order.product.barcode.number %></td>
+        <td><%= order.quantity %></td>
+        <td><%= number_to_currency((order.total_price_in_cents / 100) || 0) %></td>
+        <td><%= t(order.status) %></td>
+        <td>
+          <%= button_to order_path(order), method: :delete, class: "btn btn-outline-danger" do %>
+            <i class="bi bi-power"></i>
+          <% end if order.status == "pending"  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

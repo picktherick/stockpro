@@ -24,3 +24,22 @@ input[type=number]::-webkit-outer-spin-button {
 span{
 	color: red
 }
+
+.min-width-200px {
+	min-width: 200px;
+}
+
+.main-container {
+	animation: smooth 1s forwards !important;
+}
+
+@keyframes smooth {
+	from{
+		opacity: 0;
+		transform: translateY(-30px);
+	}
+	to{
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}

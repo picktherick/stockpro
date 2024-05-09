@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :products
   resources :barcodes
+  resources :orders
+
+  get "orders/new/find/product" => "orders#find_product", as: :find_product
 end

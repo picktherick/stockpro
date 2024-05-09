@@ -24,7 +24,7 @@
   </div>
 
   <div>
-    
+    <%= link_to "Voltar", products_path, class:"btn btn-outline-secondary" %>
     <%= form.submit "#{@product.persisted? ? "Atualizar" : "Cadastrar"}", class: "btn btn-primary" %>
   </div>
 <% end %>

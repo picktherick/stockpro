@@ -31,7 +31,7 @@ class BarcodesController < ApplicationController
     return (
       flash[:error] = "Não foi possível adicionar o produto #{product.name} pois ele já pertence ao código de barras #{product.barcode.number}"
       redirect_to edit_barcode_url(@barcode)
-    ) if product.barcode.present?
+    ) if product.barcode.present? && product.barcode.number != params[:barcode][:number]
 
     if @barcode.update(barcode_params)
       flash[:success] = "Código de Barras atualizado com sucesso!"
