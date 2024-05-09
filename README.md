@@ -1,6 +1,6 @@
 ## Made by @rickkque
 
-# Installarion
+# Installation
 
 * Ruby version.................v3.2
 
@@ -13,3 +13,5 @@
 * run ```rails assets:precompile``` <-- **Important!**
 
 * run ```rails s```
+
+#Enjoy!
