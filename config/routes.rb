@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :products
   resources :barcodes
   resources :orders
+  resources :clients
 
   get "orders/new/find/product" => "orders#find_product", as: :find_product
 end

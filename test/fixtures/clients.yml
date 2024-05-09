@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  identity_document_number: MyString
+  phone_number: MyString
+  birth_date: 2024-05-09 05:09:29
+  zipcode: MyString
+  street: MyString
+  number: MyString
+  complement: MyString
+  neighborhood: MyString
+  city: MyString
+  state: MyString
+  observations: MyText
+
+two:
+  name: MyString
+  identity_document_number: MyString
+  phone_number: MyString
+  birth_date: 2024-05-09 05:09:29
+  zipcode: MyString
+  street: MyString
+  number: MyString
+  complement: MyString
+  neighborhood: MyString
+  city: MyString
+  state: MyString
+  observations: MyText

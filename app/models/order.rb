@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :product
+  belongs_to :client
 
   after_create :set_total
 

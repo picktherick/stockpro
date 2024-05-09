@@ -69,6 +69,7 @@ class OrdersController < ApplicationController
     def order_params
       attrs = params.require(:order).permit(
         :product_id,
+        :client_id,
         :quantity,
         :status
       )

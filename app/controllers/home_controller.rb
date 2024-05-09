@@ -7,5 +7,8 @@ class HomeController < ApplicationController
     orders = Order.all
     @total_of_orders = orders.map { |o| o.quantity }.sum
     @orders_total_amount = orders.map { |o| (o.product.price_in_cents * 100).to_i * o.quantity }.sum
+
+    clients = Client.all
+    @total_of_clients = clients.size
   end
 end

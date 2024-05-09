@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_09_031008) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_09_080929) do
   create_table "barcodes", force: :cascade do |t|
     t.integer "product_id", null: false
     t.string "number"
@@ -20,13 +20,33 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_09_031008) do
     t.index ["product_id"], name: "index_barcodes_on_product_id"
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "identity_document_number"
+    t.string "phone_number"
+    t.datetime "birth_date"
+    t.string "zipcode"
+    t.string "street"
+    t.string "number"
+    t.string "complement"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "state"
+    t.text "observations"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "product_id", null: false
+    t.integer "client_id", null: false
     t.integer "quantity"
     t.string "status"
     t.float "total_price_in_cents"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_orders_on_client_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
   end
 
@@ -53,5 +73,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_09_031008) do
   end
 
   add_foreign_key "barcodes", "products"
+  add_foreign_key "orders", "clients"
   add_foreign_key "orders", "products"
 end

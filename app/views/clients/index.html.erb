@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-10">
+    <h1>Clientes</h1>
+  </div>
+  <div class="col-2">
+    <%= link_to "Novo", new_client_path, class: "btn btn-primary float-end" %>
+  </div>
+</div>
+<hr>
+<table class="table table-striped shadow">
+  <thead>
+    <tr>
+      <th>Criado em</th>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>Telefone</th>
+      <th>Data de Nascimento</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        <td><%= link_to client.name, edit_client_path(client) %></td>
+        <td><%= client.identity_document_number %></td>
+        <td><%= client.phone_number %></td>
+        <td><%= client.birth_date.strftime("%d/%m/%Y") %></td>
+        <td><%= t(client.status) %></td>
+        <td>
+          <%= button_to client_path(client), method: :delete, class: "btn btn-outline-danger" do %>
+            <i class="bi bi-power"></i>
+          <% end  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

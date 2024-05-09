@@ -1,0 +1,91 @@
+<%= form_with(model: client) do |form| %>
+  <div class="row">
+    <div class="col-6">
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Nome</span>
+        <%= form.text_field :name, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">CPF</span>
+        <%= form.text_field :identity_document_number, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Telefone</span>
+        <%= form.text_field :phone_number, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Data de Nascimento</span>
+        <%= form.date_field :birth_date, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+      
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Observations</span>
+        <%= form.text_area :observations, class: "form-control shadow shadow-sm", rows: 4 %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Status</span>
+        <%= form.select(
+          :status, 
+          options_for_select(
+            Client.statuses.map { |s| [t(s[0]), s[1]] }, 
+            @client.status
+          )) 
+        %>
+      </div>
+    </div>
+
+    <div class="col-6 row">
+      <div class="input-group mb-3 ">
+        <span class="input-group-text shadow shadow-sm">CEP</span>
+        <%= form.text_field :zipcode, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Rua</span>
+        <%= form.text_field :street, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Número</span>
+        <%= form.text_field :number, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Complemento</span>
+        <%= form.text_field :complement, class: "form-control shadow shadow-sm" %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Bairro</span>
+        <%= form.text_field :neighborhood, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Cidade</span>
+        <%= form.text_field :city, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Estado</span>
+        <%= form.text_field :state, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= link_to "Voltar", clients_path, class:"btn btn-outline-secondary" %>
+    <%= form.submit "#{@client.persisted? ? "Atualizar" : "Cadastrar"}", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script>
+  $('#client_identity_document_number').mask("000.000.000-00");
+  $('#client_phone_number').mask("(00) 00000-0000");
+  $('#client_zipcode').mask("00000-000");
+  $('#client_status').attr("class", "form-select");
+
+</script>

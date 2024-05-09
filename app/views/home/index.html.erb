@@ -31,5 +31,11 @@
       <p class="card-text fs-4"><%= number_to_currency(@orders_total_amount / 100) %></p>
     </div>
   </div>
-  
+  <div class="card text-bg-light mb-3 text-center min-width-200px" style="max-width: 18rem;">
+    <div class="card-header">Clientes</div>
+    <div class="card-body">
+      <h5 class="card-title">Total</h5>
+      <p class="card-text fs-4"><%= @total_of_clients %></p>
+    </div>
+  </div>
 </div>

@@ -2,9 +2,11 @@ pt-BR:
   in_stock: Em estoque
   low_stock: Estoque baixo
   out_of_stock: Fora de estoque
-  pending: "Pendente"
-  on_delivery_route: "Em rota de entrega"
-  delivered: "Entregue"
+  pending: Pendente
+  on_delivery_route: Em rota de entrega
+  delivered: Entregue
+  active: Ativo
+  inactive: Inativo
   activerecord:
     errors:
       messages:
