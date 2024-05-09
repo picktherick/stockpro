@@ -1,4 +1,7 @@
 pt-BR:
+  in_stock: Em estoque
+  low_stock: Estoque baixo
+  out_of_stock: Fora de estoque
   activerecord:
     errors:
       messages:

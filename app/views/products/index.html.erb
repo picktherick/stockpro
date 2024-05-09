@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-10">
+    <h1>Produtos</h1>
+  </div>
+  <div class="col-2">
+    <%= link_to "Novo", new_product_path, class: "btn btn-primary float-end" %>
+  </div>
+</div>
+<hr>
+<table class="table table-striped shadow">
+  <thead>
+    <tr>
+      <th>Criado em</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Quantidade</th>
+      <th>Preço (unidade)</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        <td><%= link_to product.name, edit_product_path(product) %></td>
+        <td><%= product.description %></td>
+        <td><%= product.quantity %></td>
+        <td><%= number_to_currency(product.price_in_cents) %></td>
+        <td><%= t(product.status) %></td>
+        <td>
+          <%= button_to product_path(product), method: :delete, class: "btn btn-outline-danger" do %>
+            <i class="bi bi-trash"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

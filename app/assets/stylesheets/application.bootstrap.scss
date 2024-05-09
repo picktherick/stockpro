@@ -1,2 +1,26 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.nav-link {
+	text-decoration: none;
+	color: white;
+}
+
+.nav-link:hover {
+	color: #a1a1a1;
+}
+
+.decoration-none {
+	text-decoration: none;
+}
+
+span{
+	color: red
+}

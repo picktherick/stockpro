@@ -1,0 +1,32 @@
+<%= form_with(model: barcode) do |form| %>
+  <div class="row">
+    <div class="col-6">
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Número</span>
+        <%= form.text_field :number, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Produto</span>
+        <%= form.select(
+          :product_id, 
+          options_for_select(
+            Product.all.map { |k| [k.name, k.id] }, 
+            @barcode.product_id
+          ), 
+          { include_blank: 'Selecione o Produto' }, 
+          class: "form-select", required: true ) 
+        %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= link_to "Voltar", barcodes_path, class:"btn btn-outline-secondary" %>
+    <%= form.submit "#{@barcode.persisted? ? "Atualizar" : "Cadastrar"}", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script>
+  $('#barcode_number').mask("00000000000000000000000000000000");
+</script>

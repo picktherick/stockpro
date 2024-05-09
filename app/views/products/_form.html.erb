@@ -1,0 +1,35 @@
+<%= form_with(model: product) do |form| %>
+  <div class="row">
+    <div class="col-6">
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Nome</span>
+        <%= form.text_field :name, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Descrição</span>
+        <%= form.text_field :description, class: "form-control shadow shadow-sm", required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">Quantidade</span>
+        <%= form.number_field :quantity, class: "form-control shadow shadow-sm", max: 500, min: 0, required: true %>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text shadow shadow-sm">R$</span>
+        <%= form.text_field :price_in_cents, class: "form-control shadow shadow-sm", value: @product.persisted? ? (@product.price_in_cents) : "", required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    
+    <%= form.submit "#{@product.persisted? ? "Atualizar" : "Cadastrar"}", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script>
+  $('#product_quantity').mask("000");
+  $('#product_price_in_cents').mask("000.000.000,00", {reverse: true});
+</script>

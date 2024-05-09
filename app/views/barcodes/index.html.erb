@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-10">
+    <h1>Códigos de Barras</h1>
+  </div>
+  <div class="col-2">
+    <%= link_to "Novo", new_barcode_path, class: "btn btn-primary float-end" %>
+  </div>
+</div>
+<hr>
+<table class="table table-striped shadow">
+  <thead>
+    <tr>
+      <th>Criado em</th>
+      <th>Número</th>
+      <th>Produto</th>
+      <th>Situação</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @barcodes.each do |barcode| %>
+      <tr>
+        <td><%= barcode.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        <td>
+          <%= link_to barcode.number, edit_barcode_path(barcode) if barcode.status %>
+          <%= barcode.number unless barcode.status %>
+        </td>
+        <td><%= link_to barcode.product.name, edit_product_path(barcode.product) %></td>
+        <td><%= barcode.status ? "Ativo" : "Inativo" %></td>
+        <td>
+          <% if barcode.status %>
+            <%= button_to barcode_path(barcode), method: :delete, class: "btn btn-outline-danger" do %>
+              <i class="bi bi-power"></i>
+            <% end %>
+          <% else %>
+            Indisponível
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
